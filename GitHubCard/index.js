@@ -3,6 +3,8 @@
            https://api.github.com/users/<your name>
 */
 
+axios.get('https://api.github.com/users/adamcpenman')
+console.log(axios.get);
 /* Step 2: Inspect and study the data coming back, this is YOUR 
    github info! You will need to understand the structure of this 
    data in order to use it to build your component function 
@@ -45,6 +47,50 @@ const followersArray = [];
 </div>
 
 */
+// Creating Variables
+const card = document.querySelector('.cards');
+
+
+// Creating Function 
+
+function cardCreator(item) {
+
+  //creating elements in function
+  const cardDiv = document.createElement('div');
+  const cardImg = document.createElement('img');
+  const cardInfoDiv = document.createElement('div');
+  const headerThree = document.createElement('h3');
+  const usernameP = document.createElement('p');
+  const locationP = document.createElement('p');
+  const profileP = document.createElement('p');
+  const addressA = document.createElement('a');
+  const followersP = document.createElement('p');
+  const followingP = document.createElement('p');
+  const bioP = document.createElement('p');
+
+  //creating classes
+  cardDiv.classList.add('class');
+  cardInfoDiv.classList.add('card-info');
+  headerThree.classList.add('name');
+  usernameP.classList.add('username');
+
+  //appending elements
+  cardDiv.appendChild(cardImg);
+  cardDiv.appendChild(cardInfoDiv);
+  cardInfoDiv.appendChild(headerThree);
+  cardInfoDiv.appendChild(usernameP);
+  cardInfoDiv.appendChild(locationP);
+  cardInfoDiv.appendChild(profileP);
+  cardInfoDiv.appendChild(addressA);
+  cardInfoDiv.appendChild(followersP);
+  cardInfoDiv.appendChild(followingP);
+  cardInfoDiv.appendChild(bioP);
+
+  return cardDiv;
+}
+
+console.log(cardCreator());
+
 
 /* List of LS Instructors Github username's: 
   tetondan
