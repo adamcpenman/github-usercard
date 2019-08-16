@@ -45,6 +45,82 @@
 </div>
 
 */
+//   const cardsSection = document.querySelector('.cards');
+// axios.get("https://api.github.com/users/adamcpenman")
+//   .then(userData => {
+//    let followersArray = []
+//       axios.get('https://api.github.com/users/adamcpenman')
+//   .then (followers => {
+//     followersArray = followers.data.map(follower => follower.login)
+
+//     followersArray.forEach(followersLogin => {
+//       axios.get(`https://api.github.com/users/${}`)
+//        .then(followerData =>  {
+//         cardsSection.appendChild(createCard(followerData.data))
+//        })
+//        .catch(error => console.error(error))
+//     })
+//     })
+//     .catch(error => console.error(error))
+//   console.log(createCard(userData.data))
+//   cardsSection.appendChild(createCard(userData.data));
+//   })
+//   .catch(error => {
+//     console.log('error');
+//   })
+
+// function CreateCard (user) {
+//   const card = document.createElement('div');
+//   card.classList.add('card');
+
+//   const img = document.createElement('img');
+//   img.src = user['avatar_url'];
+
+//   const cardInfo = document.createElement('div');
+//   cardInfo.classList.add('card-info');
+
+//   const h3 = document.createElement('h3');
+//   h3.classList.add('name');
+//   h3.textContent = user.name || user.login;
+
+//   const pTags = [];
+//   for(let i = 0; i < 6; i++){
+//     pTags.push(document.createElement('p'))
+//   }
+//   pTags[0].classList.add('username')
+//   pTags[0].textContent = user.login;
+
+//   pTags[1].textContent = `Location: ${user.location}` || 'Not Available';
+
+//   pTags[2].textContent = `Profile: `;
+//   const a = document.createElement('a');
+//   const aURL = user['html_url'];
+//   // a.href = aURL;
+//   a.textContent = aURL
+//   pTags[2].appendChild(a);
+
+//   pTags[3].textContent = `Followers: ${user.followers} `
+//   pTags[4].textContent = `Following: ${user.following}`
+//   pTags[5].textContent = `Bio: ${user.bio || NA}`
+
+//  cardInfo.appendChild(h3);
+//  pTags.forEach(p => cardInfo.appendChild.(p));
+
+//  card.appendChild(img);
+//  card.appendChild(cardInfo);
+
+
+
+// return card;
+
+// }
+
+
+
+
+
+
+
 // Creating Variables
 const card = document.querySelector('.cards');
 
