@@ -3,8 +3,6 @@
            https://api.github.com/users/<your name>
 */
 
-axios.get('https://api.github.com/users/adamcpenman')
-console.log(axios.get);
 /* Step 2: Inspect and study the data coming back, this is YOUR 
    github info! You will need to understand the structure of this 
    data in order to use it to build your component function 
@@ -26,7 +24,7 @@ console.log(axios.get);
           user, and adding that card to the DOM.
 */
 
-const followersArray = [];
+
 
 /* Step 3: Create a function that accepts a single object as its only argument,
           Using DOM methods and properties, create a component that will return the following DOM element:
@@ -53,7 +51,16 @@ const card = document.querySelector('.cards');
 
 // Creating Function 
 
-function cardCreator(item) {
+function cardCreator (
+  imageUrl,
+  titleText,
+  usernameInfo,
+  userLocation,
+  profileHref,
+  followCount,
+  followingCount,
+  userBio
+) {
 
   //creating elements in function
   const cardDiv = document.createElement('div');
@@ -69,7 +76,7 @@ function cardCreator(item) {
   const bioP = document.createElement('p');
 
   //creating classes
-  cardDiv.classList.add('class');
+  cardDiv.classList.add('card');
   cardInfoDiv.classList.add('card-info');
   headerThree.classList.add('name');
   usernameP.classList.add('username');
@@ -86,10 +93,37 @@ function cardCreator(item) {
   cardInfoDiv.appendChild(followingP);
   cardInfoDiv.appendChild(bioP);
 
+  //Grabbing content
+  cardImg.src = imageUrl;
+  headerThree.textContent = titleText;
+  usernameP.textContent = usernameInfo;
+  locationP.textContent = `Location: ${userLocation}`;
+  profileP.textContent = "Profile: ";
+  addressA.textContent = profileHref;
+  followersP.textContent = `Followers: ${followCount}`;
+  followingP.textContent = `Following: ${followingCount}`;
+  bioP.textContent = `Bio: ${userBio}`;  
+
+  
+
   return cardDiv;
 }
 
-console.log(cardCreator());
+// console.log(cardCreator());
+
+// const adam = cardCreator ( 
+//   "https://avatars2.githubusercontent.com/u/50333588?v=4",
+//   "name",
+//   "login",
+//   "location",
+//   "html_url",
+//   "followers",
+//   "following",
+//   "bio"
+// );
+
+
+// card.appendChild(adam);
 
 
 /* List of LS Instructors Github username's: 
@@ -99,3 +133,93 @@ console.log(cardCreator());
   luishrd
   bigknell
 */
+
+// axios.get('https://api.github.com/users/adamcpenman').then(response => {
+//   console.log(response);
+// });
+
+// axios
+//   .get("https://api.github.com/users/adamcpenman")
+//   .then(response => {
+//     console.log(response.data);
+
+//     const card = cardCreator(
+//       response.data.avatar_url,
+//       response.data.name,
+//       response.data.login,
+//       response.data.location,
+//       response.data.html_url,
+//       response.data.followers,
+//       response.data.following,
+//       response.data.bio
+//     );
+//     const container = document.querySelector(".cards");
+//     container.appendChild(card);
+//   })
+//   .catch(error => {
+//     console.log("Unsuccessful")
+//   });
+
+const followersArray = [
+  'adamcpenman',
+  'LCRT215',
+  'dannyotown',
+  'LoralieFlint',
+  'wallacecs007',
+  'nickdurbin',
+  'OksanaK24',
+  'rupol'
+];
+
+const followersLink = followersArray.map(item => {
+  const link = "http://api.github.com/users/"
+  return link + item;
+});
+
+console.log(followersLink);
+
+followersLink.forEach(item => {
+axios
+  .get(item)
+  .then(response => {
+    console.log(response.data);
+
+    const card = cardCreator(
+      response.data.avatar_url,
+      response.data.name,
+      response.data.login,
+      response.data.location,
+      response.data.html_url,
+      response.data.followers,
+      response.data.following,
+      response.data.bio
+    );
+    const container = document.querySelector(".cards");
+    container.appendChild(card);
+  })
+  .catch(error => {
+    console.log("Unsuccessful")
+    })
+  });
+
+  // axios
+  // .get(http://api.github.com/users/adamcpenmn)
+  // .then(response => {
+  //   console.log(response.data);
+
+  //   const card = cardCreator(
+  //     response.data.avatar_url,
+  //     response.data.name,
+  //     response.data.login,
+  //     response.data.location,
+  //     response.data.html_url,
+  //     response.data.followers,
+  //     response.data.following,
+  //     response.data.bio
+  //   );
+  //   const container = document.querySelector(".cards");
+  //   container.appendChild(card);
+  // })
+  // .catch(error => {
+  //   console.log("Unsuccessful")
+  //   })
